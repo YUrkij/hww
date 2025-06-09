@@ -3,10 +3,15 @@ package hw5;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Паттерн команда
+ */
 interface Command {
     void execute();
 }
-
+/**
+ * Паттерн посетитель
+ */
 interface DocumentVisitor {
     void visit(TextFile textFile);
     void visit(ImageFile imageFile);
@@ -131,8 +136,8 @@ public class Main {
         Command openReport = new OpenCommand(documents.get(0));
         Command savePhoto = new SaveCommand(documents.get(1));
 
-        openReport.execute();  // Открытие текстового файла: report.txt
-        savePhoto.execute();   // Экспорт изображения: photo.jpg
+        openReport.execute();  // "Открытие" текстового файла: report.txt
+        savePhoto.execute();   // "Экспорт" изображения: photo.jpg
 
         StatsVisitor statsVisitor = new StatsVisitor();
         for (Document doc : documents) {
